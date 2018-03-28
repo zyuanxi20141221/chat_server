@@ -21,8 +21,7 @@ void ChatServer::run(qint16 port) {
     printf("ChatServer listen success!\n");
 }
 
-
-void ChatServer::incomingConnection(int handle)
+void ChatServer::incomingConnection(qintptr handle)
 {
     printf("incomingConnection(): %d\n", handle);
     MySocket *mysocket = new MySocket(this);

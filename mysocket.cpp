@@ -15,6 +15,7 @@ MySocket::~MySocket()
 
 void MySocket::onReadyRead()
 {
+    printf("MySocket::onReadyRead \n");
     char data[1024] = { 0 };
     int len = read(data, 1024);
     printf("len: %d\n", len);
@@ -24,10 +25,10 @@ void MySocket::onReadyRead()
         return;
     }
     printf("Receive data: %s \n", data);
-    if(writeData(data, 1024) <= 0) {
+    if(write(data, 1024) <= 0) {
         printf("MySocket::OnReadyRead() write data failed !\n");
-    }
-    else {
+    }else {
+        waitForBytesWritten(-1);
         printf("send data %s \n", data);
     }
 }
